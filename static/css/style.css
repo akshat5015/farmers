@@ -1,0 +1,300 @@
+/* General Body & Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+h1, h2, h3 {
+    color: #1c1e21;
+}
+
+/* Containers */
+.welcome-container {
+    text-align: center;
+    background: white;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#app-container {
+    width: 100%;
+    max-width: 700px;
+    height: 90vh;
+    max-height: 800px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Buttons */
+.button-primary {
+    background-color: #008c76; /* WhatsApp Green */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+.button-primary:hover {
+    background-color: #007a68;
+}
+
+.button-secondary {
+    background-color: #e9eaeb;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.button-secondary:hover {
+    background-color: #dcdfe2;
+}
+
+
+/* Upload Screen */
+#upload-screen {
+    padding: 30px;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.form-group input[type="file"], .form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Chat Screen */
+.hidden {
+    display: none !important;
+}
+
+/* --- FIX STARTS HERE --- */
+/* This new block ensures the chat screen components are laid out correctly */
+#chat-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+/* --- FIX ENDS HERE --- */
+
+
+.chat-header {
+    background-color: #f0f2f5;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+.chat-header h3 {
+    margin: 0;
+}
+
+#chat-window {
+    flex-grow: 1; /* This now works correctly because its parent is a flex container */
+    overflow-y: auto; /* This will now add the scrollbar when content overflows */
+    padding: 20px;
+    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    background-color: #e5ddd5;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chat Bubbles and Messages */
+.message {
+    display: flex;
+    margin-bottom: 2px;
+}
+.message-bubble {
+    max-width: 75%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    word-wrap: break-word;
+    line-height: 1.4;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+    position: relative;
+}
+.message-content {
+    margin-right: 50px;
+}
+.message-meta {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 11px;
+    color: #667781;
+    display: flex;
+    align-items: center;
+}
+.message-meta .timestamp {
+    margin-right: 5px;
+}
+.message.user {
+    justify-content: flex-end;
+    margin-left: auto;
+}
+.message.user .message-bubble {
+    background-color: #dcf8c6;
+    border-bottom-right-radius: 4px;
+}
+.message.assistant {
+    justify-content: flex-start;
+}
+.message.assistant .message-bubble {
+    background-color: #ffffff;
+    border-bottom-left-radius: 4px;
+}
+.message.assistant .message-meta {
+    right: 10px;
+}
+
+/* Read Receipts (Ticks) */
+.ticks {
+    font-size: 14px;
+    color: #667781;
+}
+.ticks.read {
+    color: #53bdeb;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    padding: 8px 12px;
+    background-color: #fff;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+}
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background-color: #999;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 1px;
+    animation: bounce 1.2s infinite ease-in-out;
+}
+.typing-indicator span:nth-of-type(2) { animation-delay: -1.0s; }
+.typing-indicator span:nth-of-type(3) { animation-delay: -0.8s; }
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+}
+
+/* Chat Input Area */
+#chat-input-area {
+    padding: 10px;
+    background-color: #f0f2f5;
+    border-top: 1px solid #ddd;
+    flex-shrink: 0; /* Prevents the input area from shrinking */
+}
+#message-form {
+    display: flex;
+    align-items: center;
+}
+#message-input {
+    flex-grow: 1;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 25px;
+    font-size: 16px;
+    margin: 0 10px;
+}
+#mic-btn, #send-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #54656f;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.2s;
+}
+#mic-btn.is-listening, #mic-btn:hover, #send-btn:hover {
+    color: #008c76;
+}
+.fa-microphone-slash {
+    color: #aaa;
+}
+
+/* Voice Unlock Overlay */
+#voice-unlock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.voice-unlock-box {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.voice-unlock-box h3 {
+    margin-top: 0;
+}
+
+.voice-unlock-box p {
+    margin-bottom: 25px;
+    color: #555;
+}
+
+#start-voice-btn i {
+    margin-right: 8px;
+}
+
+/* Loader Spinner */
+#loader {
+    text-align: center;
+    padding: 20px;
+}
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #008c76;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
